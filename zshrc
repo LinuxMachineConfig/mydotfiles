@@ -1,16 +1,15 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
+# Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
+# load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
-ZSH_THEME="passion"
-
+#ZSH_THEME="random"
+eval "$(starship init zsh)"
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -71,10 +70,11 @@ ZSH_THEME="passion"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting you-should-use zsh-bat fzf)
 
 source $ZSH/oh-my-zsh.sh
-
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=60"
+#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -86,32 +86,46 @@ source $ZSH/oh-my-zsh.sh
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='nvim'
 # fi
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# export ARCHFLAGS="-arch $(uname -m)"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# Set personal aliases, overriding those provided by Oh My Zsh libs,
+# plugins, and themes. Aliases can be placed here, though Oh My Zsh
+# users are encouraged to define aliases within a top-level file in
+# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
+# - $ZSH_CUSTOM/aliases.zsh
+# - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-# ZSH alias
+alias n="nvim"
+alias zshconfig="nvim ~/.zshrc"
+alias ohmyzsh="nvim ~/.oh-my-zsh"
+alias ff="fastfetch -c .local/share/fastfetch/presets/hypr/archlinux-new.jsonc"
+alias update="sudo pacman -Syyu"
+alias query="sudo pacman -Ss"
+alias install="sudo pacman -S"
+alias y="yay"
+alias yp="yay -Syyu"
+alias yi="yay -S"
+alias ys="yay -Ss"
+alias kittyconfig="nvim ~/.config/kitty/kitty.conf"
+alias niriconfig="nvim ~/.config/niri/config.kdl"
 alias ls="colorls"
-alias update='sudo pacman -Syyu'
-alias query='sudo pacman -Ss'
 alias remove='sudo pacman -R'
-alias i3config='vim ~/.config/i3/config'
-alias zshconfig='vim ~/.zshrc'
-alias bspconfig='vim ~/.config/bspwm/bspwmrc'
-alias sxconfig='vim ~/.config/sxhkd/sxhkdrc'
-alias wayconfig='vim ~/.config/waybar/config'
-alias waystyle='vim ~/.config/waybar/style.css'
-alias hyprconfig='vim ~/.config/hypr/hyprland.conf'
+alias i3config='nvim ~/.config/i3/config'
+alias bspconfig='nvim ~/.config/bspwm/bspwmrc'
+alias sxconfig='nvim ~/.config/sxhkd/sxhkdrc'
+alias wayconfig='nvim ~/.config/waybar/config'
+alias waystyle='nvim ~/.config/waybar/style.css'
+alias hyprconfig='nvim ~/.config/hypr/hyprland.conf'
+
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+
